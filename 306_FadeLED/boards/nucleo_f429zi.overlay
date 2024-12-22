@@ -1,0 +1,73 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright (c) 2024 Cypress Semiconductor Corporation (an Infineon company) or
+ * an affiliate of Cypress Semiconductor Corporation
+ */
+
+/ {
+	pwmleds {
+		compatible = "pwm-leds";
+		pwm_led_green: pwm_led_green {
+			pwms = <&pwm3 3 65000 PWM_POLARITY_NORMAL>; //100kHz
+			label = "PWM LED GREEN";
+		};
+		pwm_led_blue: pwm_led_blue {
+			pwms = <&pwm4 2 65000 PWM_POLARITY_NORMAL>;
+			label = "PWM LED BLUE";
+		};
+		pwm_led_red: pwm_led_red {
+			pwms = <&pwm12 1 65000 PWM_POLARITY_NORMAL>;
+			label = "PWM LED RED";
+		};
+	};
+
+	aliases {
+		pwmledgreen = &pwm_led_green;
+		pwmledblue = &pwm_led_blue;
+		pwmledred = &pwm_led_red;
+	};
+};
+
+&timers3 {
+	status = "okay";
+	pwm3: pwm {
+		status = "okay";
+		pinctrl-0 = <&tim3_ch3n_pb0>;
+		pinctrl-names = "default";
+	};
+};
+
+&timers4 {
+	status = "okay";
+	pwm4: pwm {
+		status = "okay";
+		pinctrl-0 = <&tim4_ch2n_pb7>;
+		pinctrl-names = "default";
+	};
+};
+
+&timers12 {
+	status = "okay";
+	pwm12: pwm {
+		status = "okay";
+		pinctrl-0 = <&tim12_ch1n_pb14>;
+		pinctrl-names = "default";
+	};
+};
+
+&pinctrl {
+	tim3_ch3n_pb0: tim3_ch3n_pb0 {
+		pinmux = <STM32_PINMUX('B', 0, AF2)>;
+		drive-push-pull;
+	};
+	tim4_ch2n_pb7: tim4_ch2n_pb7 {
+		pinmux = <STM32_PINMUX('B', 7, AF2)>;
+		drive-push-pull;
+	};
+	tim12_ch1n_pb14: tim12_ch1n_pb14 {
+		pinmux = <STM32_PINMUX('B', 14, AF9)>;
+		drive-push-pull;
+	};
+};
+
