@@ -1,0 +1,5 @@
+west:
+  command: /home/ah/Documents/Workspace/STM32/ZephyrProject/.venv/bin/west build -p
+    always -b nucleo_f429zi --build-dir /home/ah/Documents/Workspace/STM32/ZephyrProject/Zephyr/custom_dts_binding/build
+  topdir: /home/ah/Documents/Workspace/STM32/ZephyrProject
+  version: 1.3.0
