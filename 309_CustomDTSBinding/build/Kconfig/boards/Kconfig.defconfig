@@ -1,2 +1,0 @@
-# Load Zephyr board defconfig descriptions.
-osource "/home/ah/Documents/Workspace/STM32/ZephyrProject/zephyr/boards/st/nucleo_f429zi/Kconfig.defconfig"

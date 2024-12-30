@@ -1,2 +1,0 @@
-# Load Sysbuild board Kconfig descriptions.
-osource "/home/ah/Documents/Workspace/STM32/ZephyrProject/zephyr/boards/st/nucleo_f429zi/Kconfig.sysbuild"

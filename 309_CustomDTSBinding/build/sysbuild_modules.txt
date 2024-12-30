@@ -1,1 +1,0 @@
-"mcuboot":"/home/ah/Documents/Workspace/STM32/ZephyrProject/bootloader/mcuboot":"/home/ah/Documents/Workspace/STM32/ZephyrProject/bootloader/mcuboot/boot/zephyr/sysbuild"

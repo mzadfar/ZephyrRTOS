@@ -1,8 +1,12 @@
-/*
- * SPDX-License-Identifier: Apache-2.0
+/**
+ * @file nucleo_f429zi.overlay
+ * @author AH
+ * @brief
+ * @version 0.1
+ * @date 2024-12-28
  *
- * Copyright (c) 2024 Cypress Semiconductor Corporation (an Infineon company) or
- * an affiliate of Cypress Semiconductor Corporation
+ * @copyright Copyright (c) 2024
+ *
  */
 
 / {

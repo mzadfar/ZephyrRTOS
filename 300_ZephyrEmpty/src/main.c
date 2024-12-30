@@ -1,16 +1,20 @@
-/*
- * Copyright (c) 2019 Nordic Semiconductor ASA
+/**
+ * @file main.c
+ * @author AH
+ * @brief
+ * @version 0.1
+ * @date 2024-12-28
  *
- * SPDX-License-Identifier: Apache-2.0
+ * @copyright Copyright (c) 2024
+ *
  */
 
 #include <zephyr/kernel.h>
 
-int main(void)
-{
+int main(void) {
 #ifdef CONFIG_SAMPLE_DO_OUTPUT
-	printk("Hello World from minimal!\n");
+  printk("Hello World from minimal!\n");
 #endif
 
-	return 0;
+  return 0;
 }
