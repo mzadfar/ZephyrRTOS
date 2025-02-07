@@ -1,86 +1,88 @@
 # FreeRTOS Programming
 
-The purpose of this repository is to start from practicing RTOS programming on FreeRTOS, and provide a base for embedded code development using Hardware Abstraction Layer (HAL) of STM32F439ZI developed by ST.
+The purpose of this repository is to start from practicing RTOS programming on Zephyr, and provide a base for embedded code development using Hardware Abstraction Layer (HAL) of STM32F439ZI developed by ST.
 
 ## Description
 
 The following topics will be practiced here on a NUCLEO-F439ZI board:
 * Empty project
-* SemiHosting
-* Virtual Com Port
-* Task Yielding
-* Task Call using Polling
-* Task Call using Interrupt
-* Task Wait and Notify
-* Task Wait, Notify, and Action
-* Delete task
-* Prioritize tasks
+* Virtual Com port
+* LED blinking
+* GPIO as output 
+* Interrupt Service Routine (ISR)
+* GPIO as input/output
+* Pulse Width Modulation (PWM)
+* Fading LEDs
+* ktimer
+* Custom DTS binding
+* Threads
+* System heap memory
+* Hash map
+* Servo motor
 
 ## Getting Started
 
 ### Dependencies
 
-* Host can be any OS like Fedora 40 Linux in this case or Ubuntu, Windows etc.  
-* arm-none-eabi-gcc should be installed.
-* gcc should be installed.
-* cmake should be installed.
-* Download and install [ST-LINK](https://www.st.com/en/development-tools/stsw-link007.html) latest firmware.
-* In this Fedora 40 OS, Download [ST-LINK](https://koji.fedoraproject.org/koji/buildinfo?buildID=2389744) v1/v2 JTAG/SWD debugging/flashing tool for STM32 microcontrollers
-* After above installation, Cmake still has issue with LIBUSB, and in this Fedora 40 OS using "yum provides */libusb.h"
-* LIBUSB should be installed.
-* STM32F4 Standard Peripheral Library Expansion [STSW-STM32120](https://www.st.com/en/embedded-software/stm32-standard-peripheral-library-expansion/products.html) should be downloaded. Find the one that has "system" under "MCU Peripheral" column.
+* Host can be any OS like Fedora 41 Linux in this case or Ubuntu, Windows etc.  
+* Follow instruction in the link"[Getting Started Guide](https://docs.zephyrproject.org/latest/develop/getting_started/index.html)" to set up a Zephyr development environment
 
 ### Installing
 
-* Check arm-none-eabi-gcc --version on a terminal. If it has not been installed, Fedora will suggest installing, and go with it.
-* Check cmake --version on a terminal. If it has not been installed, Fedora will suggest installing, and go with it. Typically, it asks for gcc installation during installing cmake if you have not installed gcc yet.
-* Install [ST-LINK](https://www.st.com/en/development-tools/stsw-link007.html) latest firmware using: sudo rpm -Uhv st-stlink-udev-rules-1.0.3-2-linux-noarch.rpm
-* In this Fedora 40 OS, install [ST-LINK](https://koji.fedoraproject.org/koji/buildinfo?buildID=2389744) v1/v2 JTAG/SWD debugging/flashing tool for STM32 microcontrollers using: sudo rpm -Uhv stlink-1.7.0-7.fc40.x86_64.rpm
-* cmake has issue with LIBUSB, and in this Fedora 40 OS using "yum provides */libusb.h" command find a version of LIBUSB that suit you, and install it using (in this case): sudo dnf install libusb1-devel-1.0.27-2.fc40.x86_64
-* Download stlink-testing.zip to open a terminal inside the extracted folder and run cmake.
-* Run make
+* After following the link"[Getting Started Guide](https://docs.zephyrproject.org/latest/develop/getting_started/index.html)", please check "cmake --version", "python3 --version", "dtc –version", and "ninja --version".
+* After "west zephyr-export" command, one of the 2 below lines should be run on the command line: "west packages pip --install" or "pip install -r /home/your_user_name/Documents/Workspace/STM32/ZephyrProject/zephyr/scripts/requirements.txt"; whichever works 
+* After running the last command to set up Zephyr development environment "west sdk install -b /home/your_user_name/Documents/Workspace/STM32/ZephyrProject/zephyr", you may receive error regarding "cannot install toolchain" which seems not a deal breaker.
+* Create a file named ~/.zephyrrc if it doesn’t exist, then open it by "vim ~/.zephyrrc", and add these lines or whatever your toolchains are to it: 
+export GNUARMEMB_TOOLCHAIN_PATH="/usr", 
+export CROSS_COMPILE="/usr/bin/arm-none-eabi-", 
+export ZEPHYR_TOOLCHAIN_VARIANT=gnuarmemb.
+* To get this value back into your current terminal environment, you must run source zephyr-env.sh from the main zephyr repository. Among other things, this script "sources ~/.zephyrrc".
 
 ### Executing program
 
 #### Empty project
 
-* This is a FreeRTOS empty example project to initiate practicing FreeRTOS. First copy folder"[Libraries](https://github.com/ahasanzadeh/BareMetal/tree/main/008_VirtualComTxCharacter)" into this project folder. Open a terminal inside the folder, and run "make clean" to remove all previously generated *.hex, *.elf, *.bin, *.srec etc files, and then run "make -j all". 
-
-#### SemiHosting
-
-* This is a FreeRTOS semihosting example to debug project using OPENOCD and a console like telnet etc. Follow corresponding order for "Empty project" above.
+* This is a Zephyr empty example project to initiate practicing Zephyr RTOS. First run "west build -p always -b nucleo_f429zi --build-dir /home/your_user_name/Documents/Workspace/STM32/ZephyrProject/Zephyr/blinky/build", and then run "west flash --runner jlink" to execute the code. 
 
 #### Virtual Com Port
 
-* This is a FreeRTOS example equipped with virtual COM port to communicate with PC instead of semihosting. Follow corresponding order for "FreeRTOS Empty project" above.
+* This is a Zephyr RTOS example equipped with virtual COM port to communicate with PC. Follow corresponding order for Zephyr RTOS "Empty project" above.
 
-#### Task Yielding
+#### LED blinking
+* Follow corresponding order for Zephyr RTOS "Empty project" above.
 
-* This is a FreeRTOS proect to implement task yielding. Follow corresponding order for "FreeRTOS Empty project" above.
+#### GPIO as output 
+* Follow corresponding order for Zephyr RTOS "Empty project" above.
 
-#### Task Call uing Polling
+#### Interrupt Service Routine (ISR)
+* Follow corresponding order for Zephyr RTOS "Empty project" above.
 
-* This is a FreeRTOS proect to call a task using polling. Follow corresponding order for "FreeRTOS Empty project" above. 
+#### GPIO as input/output
+* Follow corresponding order for Zephyr RTOS "Empty project" above.
 
-#### Task Call uing Interrupt
+#### Pulse Width Modulation (PWM)
+* Follow corresponding order for Zephyr RTOS "Empty project" above.
 
-* This is a FreeRTOS proect to call a task using interrupt. Follow corresponding order for "FreeRTOS Empty project" above. 
+#### Fading LEDs
+* Follow corresponding order for Zephyr RTOS "Empty project" above.
 
-#### Task Wait and Notify
+#### ktimer
+* Follow corresponding order for Zephyr RTOS "Empty project" above.
 
-* This is a FreeRTOS proect to put a task on wait and notify states. Follow corresponding order for "FreeRTOS Empty project" above. 
+#### Custom DTS binding
+* Follow corresponding order for Zephyr RTOS "Empty project" above.
 
-#### Task Wait, Notify, and Action
+#### Threads
+* Follow corresponding order for Zephyr RTOS "Empty project" above.
 
-* This is a FreeRTOS proect to put a task on wait, notify, and action states. Follow corresponding order for "FreeRTOS Empty project" above. 
+#### System heap memory
+* Follow corresponding order for Zephyr RTOS "Empty project" above.
 
-#### Delete task
+#### Hash map
+* Follow corresponding order for Zephyr RTOS "Empty project" above.
 
-* This is a FreeRTOS proect to delete a task. Follow corresponding order for "FreeRTOS Empty project" above. 
-
-#### Prioritize tasks
-
-* This is a FreeRTOS proect to swith priority of tasks. Follow corresponding order for "FreeRTOS Empty project" above. 
+#### Servo motor
+* Follow corresponding order for Zephyr RTOS "Empty project" above.
 
 ## Help
 
