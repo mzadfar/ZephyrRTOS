@@ -1,6 +1,6 @@
 /**
  * @file main.c
- * @author AH
+ * @author M. Z.
  * @brief
  * @version 0.1
  * @date 2024-12-22
