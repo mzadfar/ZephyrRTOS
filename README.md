@@ -24,7 +24,7 @@ The following topics will be practiced here on a NUCLEO-F439ZI board:
 
 ### Dependencies
 
-* Host can be any OS like Fedora 41 Linux in this case or Ubuntu, Windows etc.  
+* Host can be any OS like Fedora 42 Linux in this case or Ubuntu, Windows etc.  
 * Follow instruction in the link"[Getting Started Guide](https://docs.zephyrproject.org/latest/develop/getting_started/index.html)" to set up a Zephyr development environment
 
 ### Installing
@@ -90,7 +90,7 @@ TBD
 
 ## Authors
 
-Contributors names and contact info
+Contributor names and contact info
 
 TBD
 
